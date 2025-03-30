@@ -21,7 +21,7 @@ const HeroSection = () => {
                     src="/herb-background.png"
                     alt="Herbal Background"
                     fill
-                    className="object-cover"
+                    className="object-cover opacity-80"
                     priority
                 />
             </div>

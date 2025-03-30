@@ -6,12 +6,38 @@ import { fadeIn } from "@/app/lib/motion";
 import { Mail, Phone, MapPin, Send, Clock } from "lucide-react";
 import { companyInfo } from "@/app/lib/constants";
 
+const contactItems = [
+    {
+        icon: (
+            <Mail className="w-6 h-6 text-accent group-hover:text-darkolive" />
+        ),
+        title: "Email",
+        value: companyInfo.email,
+        href: `mailto:${companyInfo.email}`,
+        isLink: true,
+    },
+    {
+        icon: (
+            <Phone className="w-6 h-6 text-accent group-hover:text-darkolive" />
+        ),
+        title: "Phone",
+        value: companyInfo.phone,
+        href: `tel:${companyInfo.phone}`,
+        isLink: true,
+    },
+    {
+        icon: (
+            <MapPin className="w-6 h-6 text-accent group-hover:text-darkolive" />
+        ),
+        title: "Address",
+        value: companyInfo.address,
+        isLink: false,
+    },
+];
+
 const ContactSection = () => {
     return (
-        <section
-            id="contact"
-            className="section-padding bg-primary bg-opacity-20"
-        >
+        <section id="contact" className="section-padding bg-cream">
             <div className="container mx-auto">
                 {/* Section Title */}
                 <motion.div
@@ -26,7 +52,7 @@ const ContactSection = () => {
                         Have questions about our products or need assistance?
                         Our team is here to help you on your wellness journey.
                     </p>
-                    <div className="h-1 w-20 bg-accent mx-auto mt-4"></div>
+                    <div className="h-1 w-20 bg-sage mx-auto mt-4"></div>
                 </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
@@ -36,91 +62,71 @@ const ContactSection = () => {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true }}
-                        className="lg:col-span-2 bg-white rounded-2xl p-8 shadow-lg"
+                        className="lg:col-span-2 bg-white rounded-2xl p-8 shadow-lg border border-sage border-opacity-20"
                     >
                         <h3 className="heading-md mb-6 text-accent">
                             Get in Touch
                         </h3>
 
                         <ul className="space-y-6">
-                            <li className="flex items-start space-x-4 group hover:bg-primary hover:bg-opacity-5 p-3 rounded-lg transition-colors">
-                                <div className="p-3 bg-primary bg-opacity-10 rounded-lg group-hover:bg-accent group-hover:text-white transition-colors">
-                                    <Mail className="w-6 h-6 text-accent group-hover:text-white" />
-                                </div>
-                                <div>
-                                    <h4 className="font-semibold text-accent mb-1">
-                                        Email
-                                    </h4>
-                                    <a
-                                        href={`mailto:${companyInfo.email}`}
-                                        className="text-text hover:text-accent transition-colors"
-                                    >
-                                        {companyInfo.email}
-                                    </a>
-                                </div>
-                            </li>
-
-                            <li className="flex items-start space-x-4 group hover:bg-primary hover:bg-opacity-5 p-3 rounded-lg transition-colors">
-                                <div className="p-3 bg-primary bg-opacity-10 rounded-lg group-hover:bg-accent group-hover:text-white transition-colors">
-                                    <Phone className="w-6 h-6 text-accent group-hover:text-white" />
-                                </div>
-                                <div>
-                                    <h4 className="font-semibold text-accent mb-1">
-                                        Phone
-                                    </h4>
-                                    <a
-                                        href={`tel:${companyInfo.phone}`}
-                                        className="text-text hover:text-accent transition-colors"
-                                    >
-                                        {companyInfo.phone}
-                                    </a>
-                                </div>
-                            </li>
-
-                            <li className="flex items-start space-x-4 group hover:bg-primary hover:bg-opacity-5 p-3 rounded-lg transition-colors">
-                                <div className="p-3 bg-primary bg-opacity-10 rounded-lg group-hover:bg-accent group-hover:text-white transition-colors">
-                                    <MapPin className="w-6 h-6 text-accent group-hover:text-white" />
-                                </div>
-                                <div>
-                                    <h4 className="font-semibold text-accent mb-1">
-                                        Address
-                                    </h4>
-                                    <address className="not-italic text-text">
-                                        {companyInfo.address}
-                                    </address>
-                                </div>
-                            </li>
+                            {contactItems.map((item, index) => (
+                                <li
+                                    key={index}
+                                    className="flex items-start space-x-4 group hover:bg-mint hover:bg-opacity-30 p-3 rounded-lg transition-colors"
+                                >
+                                    <div className="p-3 bg-sage bg-opacity-30 rounded-lg group-hover:bg-sage group-hover:bg-opacity-70 transition-colors">
+                                        {item.icon}
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold text-accent mb-1">
+                                            {item.title}
+                                        </h4>
+                                        {item.isLink ? (
+                                            <a
+                                                href={item.href}
+                                                className="text-text hover:text-darkolive transition-colors"
+                                            >
+                                                {item.value}
+                                            </a>
+                                        ) : (
+                                            <address className="not-italic text-text">
+                                                {item.value}
+                                            </address>
+                                        )}
+                                    </div>
+                                </li>
+                            ))}
                         </ul>
 
-                        <div className="mt-8 p-6 bg-accent bg-opacity-5 rounded-lg border border-accent border-opacity-10">
+                        <div className="mt-8 p-6 bg-mint rounded-lg border border-sage border-opacity-30">
                             <div className="flex items-center mb-4">
-                                <Clock className="w-5 h-5 text-accent mr-2" />
+                                <Clock className="w-5 h-5 text-darkolive mr-2" />
                                 <h4 className="font-semibold text-accent">
                                     Business Hours
                                 </h4>
                             </div>
                             <ul className="space-y-2 text-sm">
-                                <li className="flex justify-between p-1 hover:bg-white hover:bg-opacity-60 rounded transition-colors">
+                                <li className="flex justify-between p-2 transition-colors">
                                     <span className="text-text font-medium">
                                         Monday - Friday:
                                     </span>
-                                    <span className="font-medium text-accent">
+                                    <span className="font-medium text-darkolive">
                                         9:00 AM - 6:00 PM
                                     </span>
                                 </li>
-                                <li className="flex justify-between p-1 hover:bg-white hover:bg-opacity-60 rounded transition-colors">
+                                <li className="flex justify-between p-2 transition-colors">
                                     <span className="text-text font-medium">
                                         Saturday:
                                     </span>
-                                    <span className="font-medium text-accent">
+                                    <span className="font-medium text-darkolive">
                                         10:00 AM - 4:00 PM
                                     </span>
                                 </li>
-                                <li className="flex justify-between p-1 hover:bg-white hover:bg-opacity-60 rounded transition-colors">
+                                <li className="flex justify-between p-2 transition-colors">
                                     <span className="text-text font-medium">
                                         Sunday:
                                     </span>
-                                    <span className="font-medium text-accent">
+                                    <span className="font-medium text-darkolive">
                                         Closed
                                     </span>
                                 </li>
@@ -134,7 +140,7 @@ const ContactSection = () => {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true }}
-                        className="lg:col-span-3 bg-white rounded-2xl p-8 shadow-lg"
+                        className="lg:col-span-3 bg-white rounded-2xl p-8 shadow-lg border border-sage border-opacity-20"
                     >
                         <h3 className="heading-md mb-6 text-accent">
                             Send a Message
@@ -153,7 +159,7 @@ const ContactSection = () => {
                                         type="text"
                                         id="name"
                                         name="name"
-                                        className="form-input"
+                                        className="w-full px-4 py-3 rounded-lg border border-mint focus:border-accent focus:ring-2 focus:ring-sage focus:ring-opacity-30 bg-cream bg-opacity-50 placeholder-text placeholder-opacity-70 transition-colors"
                                         placeholder="John Doe"
                                         required
                                     />
@@ -170,7 +176,7 @@ const ContactSection = () => {
                                         type="email"
                                         id="email"
                                         name="email"
-                                        className="form-input"
+                                        className="w-full px-4 py-3 rounded-lg border border-mint focus:border-accent focus:ring-2 focus:ring-sage focus:ring-opacity-30 bg-cream bg-opacity-50 placeholder-text placeholder-opacity-70 transition-colors"
                                         placeholder="john@example.com"
                                         required
                                     />
@@ -188,7 +194,7 @@ const ContactSection = () => {
                                     type="text"
                                     id="subject"
                                     name="subject"
-                                    className="form-input"
+                                    className="w-full px-4 py-3 rounded-lg border border-mint focus:border-accent focus:ring-2 focus:ring-sage focus:ring-opacity-30 bg-cream bg-opacity-50 placeholder-text placeholder-opacity-70 transition-colors"
                                     placeholder="How can we help?"
                                     required
                                 />
@@ -205,7 +211,7 @@ const ContactSection = () => {
                                     id="message"
                                     name="message"
                                     rows={5}
-                                    className="form-input resize-none"
+                                    className="w-full px-4 py-3 rounded-lg border border-mint focus:border-accent focus:ring-2 focus:ring-sage focus:ring-opacity-30 bg-cream bg-opacity-50 placeholder-text placeholder-opacity-70 transition-colors resize-none"
                                     placeholder="Your message here..."
                                     required
                                 ></textarea>
@@ -217,7 +223,7 @@ const ContactSection = () => {
                                         id="privacy"
                                         name="privacy"
                                         type="checkbox"
-                                        className="h-4 w-4 text-accent border-gray-300 rounded"
+                                        className="h-4 w-4 accent-accent border-sage rounded"
                                         required
                                     />
                                 </div>
@@ -229,7 +235,7 @@ const ContactSection = () => {
                                         I agree to the{" "}
                                         <a
                                             href="#"
-                                            className="text-accent hover:underline"
+                                            className="text-sage hover:text-darkolive hover:underline transition-colors"
                                         >
                                             Privacy Policy
                                         </a>
@@ -239,7 +245,7 @@ const ContactSection = () => {
 
                             <button
                                 type="submit"
-                                className="btn-primary w-full flex items-center justify-center space-x-2 group"
+                                className="w-full flex items-center justify-center space-x-2 bg-accent text-white rounded-lg py-4 px-6 font-medium shadow-md hover:shadow-lg hover:bg-darkolive transition-all duration-300 group"
                             >
                                 <span>Send Message</span>
                                 <Send
@@ -249,7 +255,7 @@ const ContactSection = () => {
                             </button>
                         </form>
 
-                        <p className="text-muted text-sm text-center mt-4">
+                        <p className="text-text text-sm text-center mt-4">
                             We typically respond within 24 business hours.
                         </p>
                     </motion.div>
@@ -261,9 +267,9 @@ const ContactSection = () => {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
-                    className="mt-16 p-6 bg-white rounded-xl shadow-md text-center"
+                    className="mt-16 p-6 bg-mint rounded-xl shadow-md text-center border border-sage border-opacity-10"
                 >
-                    <h3 className="text-lg font-semibold text-accent mb-3">
+                    <h3 className="text-lg font-semibold text-darkolive mb-3">
                         Connect With Us On Social Media
                     </h3>
                     <p className="text-text mb-6">
@@ -274,7 +280,7 @@ const ContactSection = () => {
                         {/* Social Media Icons */}
                         <a
                             href="#"
-                            className="p-3 bg-accent bg-opacity-10 rounded-full hover:bg-accent hover:text-white transition-colors"
+                            className="p-3 bg-sage bg-opacity-20 rounded-full hover:bg-sage hover:bg-opacity-70 hover:text-darkolive transition-colors"
                         >
                             <svg
                                 className="w-6 h-6"
@@ -291,7 +297,7 @@ const ContactSection = () => {
                         </a>
                         <a
                             href="#"
-                            className="p-3 bg-accent bg-opacity-10 rounded-full hover:bg-accent hover:text-white transition-colors"
+                            className="p-3 bg-sage bg-opacity-20 rounded-full hover:bg-sage hover:bg-opacity-70 hover:text-darkolive transition-colors"
                         >
                             <svg
                                 className="w-6 h-6"
@@ -304,7 +310,7 @@ const ContactSection = () => {
                         </a>
                         <a
                             href="#"
-                            className="p-3 bg-accent bg-opacity-10 rounded-full hover:bg-accent hover:text-white transition-colors"
+                            className="p-3 bg-sage bg-opacity-20 rounded-full hover:bg-sage hover:bg-opacity-70 hover:text-darkolive transition-colors"
                         >
                             <svg
                                 className="w-6 h-6"
@@ -321,7 +327,7 @@ const ContactSection = () => {
                         </a>
                         <a
                             href="#"
-                            className="p-3 bg-accent bg-opacity-10 rounded-full hover:bg-accent hover:text-white transition-colors"
+                            className="p-3 bg-sage bg-opacity-20 rounded-full hover:bg-sage hover:bg-opacity-70 hover:text-darkolive transition-colors"
                         >
                             <svg
                                 className="w-6 h-6"
