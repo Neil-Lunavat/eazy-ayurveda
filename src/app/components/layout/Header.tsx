@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { navLinks } from "@/app/lib/constants";
 import { Menu, X, ShoppingBag } from "lucide-react";
+import Image from "next/image";
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -67,17 +68,19 @@ const Header = () => {
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center">
-                            <span className="text-white font-bold text-lg">
-                                EA
-                            </span>
-                        </div>
+                        <Image
+                            src="/logo.webp"
+                            alt="Eazy Ayurveda Logo"
+                            width={20}
+                            height={20}
+                            className="h-auto w-auto object-contain"
+                        />
                         <div className="flex flex-col">
                             <span className="text-xl font-semibold text-accent">
                                 EAZY AYURVEDA
                             </span>
                             <span className="text-xs text-muted">
-                                NATURAL REMEDIES
+                                NATURAL MADE EASY
                             </span>
                         </div>
                     </motion.div>

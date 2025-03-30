@@ -25,7 +25,7 @@ const AboutSection = () => {
     return (
         <section
             id="about"
-            className="section-padding bg-gradient-to-b from-mint to-cream"
+            className="section-padding bg-gradient-to-b from-mint to-sage"
         >
             <div className="container mx-auto">
                 {/* Section Title */}
@@ -54,22 +54,33 @@ const AboutSection = () => {
                         viewport={{ once: true }}
                         className="relative"
                     >
-                        <div className="relative h-96 rounded-2xl overflow-hidden shadow-lg">
+                        <div className="relative h-117 rounded-2xl overflow-hidden shadow-lg">
                             <Image
-                                src="/placeholder.webp"
+                                src="/about.webp"
                                 alt="Ayurvedic Ingredients"
                                 fill
                                 className="object-cover hover:scale-105 transition-transform duration-700"
                             />
                             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-accent bg-opacity-30 mix-blend-multiply"></div>
                         </div>
-                        <div className="absolute -bottom-8 -right-8 p-6 bg-white rounded-lg shadow-xl max-w-xs transform rotate-2 border-l-4 border-yellow">
+                        <motion.div
+                            className="absolute -bottom-8 -right-8 p-6 bg-white rounded-lg shadow-xl max-w-xs border-l-4 border-yellow"
+                            animate={{
+                                rotate: [2, -2, 2],
+                            }}
+                            transition={{
+                                duration: 3,
+                                ease: "easeInOut",
+                                repeat: Infinity,
+                                repeatType: "reverse",
+                            }}
+                        >
                             <p className="text-text italic leading-relaxed">
                                 {`"Ayurveda teaches us that true wellness comes
-                                from balance - of mind, body, and spirit."`}
+            from balance - of mind, body, and spirit."`}
                             </p>
                             <div className="mt-2 h-0.5 w-12 bg-sage"></div>
-                        </div>
+                        </motion.div>
                     </motion.div>
 
                     {/* Text Side */}
@@ -78,7 +89,7 @@ const AboutSection = () => {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true }}
-                        className="bg-gradient-to-br from-white to-mint bg-opacity-80 p-8 rounded-2xl shadow-md border border-sage border-opacity-10"
+                        className="bg-white bg-opacity-80 p-8 rounded-2xl shadow-md border border-sage border-opacity-10"
                     >
                         <h3 className="heading-md mb-6 text-darkolive">
                             Our Journey
@@ -131,7 +142,7 @@ const AboutSection = () => {
                             <motion.div
                                 key={index}
                                 variants={fadeIn("up", 0.3 + index * 0.1)}
-                                className={`bg-white p-8 rounded-2xl shadow-md border border-sage border-opacity-10 group hover:bg-sage hover:opacity-10 transition-all duration-500 hover:-translate-y-2`}
+                                className={`bg-white p-8 rounded-2xl shadow-md border border-sage border-opacity-10 group hover:bg-mint hover:opacity-10 transition-all duration-500 hover:-translate-y-2`}
                             >
                                 <div className="flex flex-col items-center text-center">
                                     <div
@@ -159,7 +170,7 @@ const AboutSection = () => {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
-                    className="mt-20 p-8 bg-mint rounded-2xl text-center border border-sage border-opacity-10 shadow-md"
+                    className="mt-20 p-8 bg-white rounded-2xl text-center border border-sage border-opacity-10 shadow-md"
                 >
                     <h3 className="heading-md mb-6 text-darkolive">
                         Our Ayurvedic Philosophy

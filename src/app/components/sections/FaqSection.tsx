@@ -107,8 +107,8 @@ const FaqSection = () => {
                     viewport={{ once: true }}
                     className="text-center mt-16 p-8 bg-white rounded-xl max-w-3xl mx-auto shadow-md"
                 >
-                    <div className="w-16 h-16 bg-accent bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <HelpCircle className="w-8 h-8 text-accent" />
+                    <div className="w-16 h-16 bg-sage bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <HelpCircle className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="heading-md mb-4 text-accent">
                         Still Have Questions?
@@ -120,7 +120,7 @@ const FaqSection = () => {
                     </p>
                     <a
                         href="#contact"
-                        className="btn-primary inline-flex items-center space-x-2"
+                        className="btn-secondary inline-flex items-center space-x-2"
                     >
                         <span>Contact Us</span>
                         <svg

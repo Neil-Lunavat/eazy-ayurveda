@@ -18,6 +18,7 @@ import {
     companyInfo,
     navLinks,
 } from "@/app/lib/constants";
+import Image from "next/image";
 
 const Footer = () => {
     return (
@@ -32,13 +33,15 @@ const Footer = () => {
                         viewport={{ once: true }}
                     >
                         <div className="flex items-center mb-4">
-                            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mr-3">
-                                <span className="text-accent font-bold text-lg">
-                                    EA
-                                </span>
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-semibold text-white">
+                            <Image
+                                src="/logo.webp"
+                                alt="Eazy Ayurveda Logo"
+                                width={20}
+                                height={20}
+                                className="h-auto w-auto object-contain"
+                            />
+                            <div className="px-4">
+                                <h3 className="text-xl text-white">
                                     EAZY AYURVEDA
                                 </h3>
                                 <p className="text-xs text-on-accent-muted">
@@ -57,7 +60,7 @@ const Footer = () => {
                                     key={index}
                                     href={link.href}
                                     aria-label={link.label}
-                                    className="p-2 bg-white rounded-full text-accent hover:bg-secondary hover:text-accent transition-colors shadow-sm"
+                                    className="p-2 bg-white rounded-full text-accent hover:bg-cta hover:text-accent transition-colors shadow-sm"
                                 >
                                     {link.label === "Instagram" && (
                                         <Instagram size={18} />
@@ -188,39 +191,6 @@ const Footer = () => {
                         </ul>
                     </motion.div>
                 </div>
-
-                {/* Newsletter */}
-                <motion.div
-                    className="border-t border-white border-opacity-10 py-8"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                >
-                    <div className="bg-white p-6 rounded-xl shadow-md">
-                        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                            <div>
-                                <h3 className="text-lg font-semibold text-accent mb-2">
-                                    Subscribe for Updates
-                                </h3>
-                                <p className="text-text mb-4 md:mb-0">
-                                    Stay updated with our latest products,
-                                    offers, and Ayurvedic wellness tips.
-                                </p>
-                            </div>
-                            <div className="w-full md:w-auto flex flex-col sm:flex-row gap-3">
-                                <input
-                                    type="email"
-                                    placeholder="Your email address"
-                                    className="form-input"
-                                />
-                                <button className="btn-primary whitespace-nowrap">
-                                    Subscribe
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </motion.div>
 
                 {/* Copyright */}
                 <div className="py-6 text-center border-t border-white border-opacity-10">

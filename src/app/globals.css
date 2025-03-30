@@ -2,8 +2,16 @@
 
 @theme {
     --color-primary: #f5efdd;
-    --color-secondary: #e6ca37;
     --color-accent: #4d5e25;
+
+    /* Add logo colors */
+    --color-logo-orange: #f39c12;
+    --color-logo-blue: #3498db;
+    --color-logo-green: #2ecc71;
+
+    /* --color-primary: #f5efdd; */
+    --color-secondary: #a2b56d;
+    /* --color-accent: #4d5e25; */
     --color-darkolive: #3a4a1c;
     --color-background: #f5efdd;
     --color-text: #4d5e25;
@@ -12,6 +20,7 @@
     --color-mint: #d6e0be;
     --color-card: #ffffff;
     --color-card-foreground: var(--color-text);
+    --color-cta: #f39c12;
     --color-popover: #ffffff;
     --color-popover-foreground: var(--color-text);
     --color-primary-foreground: #ffffff;
@@ -44,7 +53,6 @@ body {
 
 h1,
 h2,
-h3,
 h4,
 h5,
 h6 {
@@ -284,21 +292,6 @@ h6 {
 
 @utility smoothscroll {
     scroll-behavior: smooth;
-}
-
-@utility grainbg {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    background-repeat: repeat;
-    background-size: 200px;
-    position: relative;
-}
-
-@utility grainbgoverlay {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: rgba(245, 239, 221, 0.92);
-    z-index: -1;
 }
 
 @utility sectiondivider {

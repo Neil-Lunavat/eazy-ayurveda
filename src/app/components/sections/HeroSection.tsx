@@ -16,12 +16,11 @@ const HeroSection = () => {
         >
             {/* Background Elements */}
             <div className="absolute inset-0 -z-10">
-                <div className="absolute inset-0 bg-primary bg-opacity-75"></div>
                 <Image
                     src="/herb-background.png"
                     alt="Herbal Background"
                     fill
-                    className="object-cover opacity-80"
+                    className="object-cover opacity-75"
                     priority
                 />
             </div>
@@ -113,7 +112,7 @@ const HeroSection = () => {
                 <motion.div
                     animate={{ y: [0, 12, 0] }}
                     transition={{ repeat: Infinity, duration: 1.5 }}
-                    className="flex flex-col items-center"
+                    className="flex flex-col items-center bg-white/80 bg-opacity-30 px-4 py-3 rounded-lg shadow-md"
                 >
                     <span className="text-accent font-medium text-sm mb-2">
                         Scroll Down
