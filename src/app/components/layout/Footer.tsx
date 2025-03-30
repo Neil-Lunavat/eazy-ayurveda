@@ -201,7 +201,17 @@ const Footer = () => {
                     <p className="text-sm text-on-accent-muted mt-2 flex items-center justify-center">
                         <span>Made with</span>
                         <Heart className="w-4 h-4 mx-1 text-secondary" />
-                        <span>in India</span>
+
+                        <span>
+                            by{" "}
+                            <a
+                                href="https://www.kraftxworks.com"
+                                target="_blank"
+                            >
+                                {" "}
+                                KraftX
+                            </a>{" "}
+                        </span>
                     </p>
                 </div>
             </div>
