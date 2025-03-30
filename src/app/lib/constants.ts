@@ -3,12 +3,12 @@ export const navLinks = [
     { href: "#home", label: "Home" },
     { href: "#product", label: "Product" },
     { href: "#about", label: "About" },
-    { href: "#faq", label: "FAQ" },
+    // { href: "#faq", label: "FAQ" },
     { href: "#contact", label: "Contact" },
 ];
 
 export const footerLinks = [
-    { href: "#faq", label: "FAQ" },
+    // { href: "#faq", label: "FAQ" },
     { href: "/privacy-policy", label: "Privacy Policy" },
     { href: "/terms", label: "Terms & Conditions" },
 ];
