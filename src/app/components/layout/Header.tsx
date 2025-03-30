@@ -60,10 +60,10 @@ const Header = () => {
             }`}
         >
             <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
-                {/* Logo */}
+                {/* Logo - Improved for mobile */}
                 <Link href="#home">
                     <motion.div
-                        className="flex items-center space-x-2"
+                        className="flex items-center"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5 }}
@@ -75,8 +75,8 @@ const Header = () => {
                             height={20}
                             className="h-auto w-auto object-contain"
                         />
-                        <div className="flex flex-col">
-                            <span className="text-xl font-semibold text-accent">
+                        <div className="flex flex-col ml-2">
+                            <span className="text-base md:text-xl font-semibold text-accent leading-tight">
                                 EAZY AYURVEDA
                             </span>
                             <span className="text-xs text-muted">
@@ -133,7 +133,7 @@ const Header = () => {
                 </button>
             </div>
 
-            {/* Mobile Navigation Menu */}
+            {/* Mobile Navigation Menu - Add max-h-screen and overflow-y-auto to prevent potential overflow issues */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
@@ -141,7 +141,7 @@ const Header = () => {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="md:hidden bg-card border-t border-border shadow-lg"
+                        className="md:hidden bg-card border-t border-border shadow-lg max-h-screen overflow-y-auto"
                     >
                         <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
                             {navLinks.map((link) => (

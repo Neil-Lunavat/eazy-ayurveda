@@ -44,17 +44,17 @@ const InstagramSection = () => {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-8xl mx-auto"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-full mx-auto"
                 >
                     {instagramPosts.map((postUrl, index) => (
                         <motion.div
                             key={index}
                             variants={fadeIn("up", 0.2 + index * 0.1)}
-                            className="flex justify-center"
+                            className="flex justify-center w-full"
                         >
                             <InstagramEmbed
                                 postUrl={postUrl}
-                                className="w-full shadow-lg rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl"
+                                className="w-full max-w-full shadow-lg rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl"
                             />
                         </motion.div>
                     ))}

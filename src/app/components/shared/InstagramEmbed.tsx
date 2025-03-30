@@ -7,6 +7,15 @@ interface InstagramEmbedProps {
     className?: string;
 }
 
+// Define a type for the Instagram embed script
+interface InstagramWindow extends Window {
+    instgrm?: {
+        Embeds?: {
+            process: () => void;
+        };
+    };
+}
+
 const InstagramEmbed: React.FC<InstagramEmbedProps> = ({
     postUrl,
     className = "",
@@ -16,8 +25,11 @@ const InstagramEmbed: React.FC<InstagramEmbedProps> = ({
     useEffect(() => {
         // Only run on client side
         if (typeof window !== "undefined" && containerRef.current) {
+            // Cast window to our custom interface
+            const instagramWindow = window as InstagramWindow;
+
             // Check if Instagram embed script is already loaded
-            if (!(window as any).instgrm) {
+            if (!instagramWindow.instgrm) {
                 const script = document.createElement("script");
                 script.src = "https://www.instagram.com/embed.js";
                 script.async = true;
@@ -33,18 +45,12 @@ const InstagramEmbed: React.FC<InstagramEmbedProps> = ({
                 document.body.appendChild(script);
             } else {
                 // If script is already loaded, process this embed
-                if ((window as any).instgrm?.Embeds?.process) {
-                    (window as any).instgrm.Embeds.process();
+                if (instagramWindow.instgrm?.Embeds?.process) {
+                    instagramWindow.instgrm.Embeds.process();
                 }
             }
         }
     }, [postUrl]);
-
-    // Extract post ID from URL for unique key
-    const getPostId = (url: string) => {
-        const matches = url.match(/\/reel\/([^/?]+)/);
-        return matches ? matches[1] : url;
-    };
 
     return (
         <div ref={containerRef} className={`instagram-embed ${className}`}>
@@ -59,10 +65,10 @@ const InstagramEmbed: React.FC<InstagramEmbedProps> = ({
                     boxShadow:
                         "0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)",
                     margin: "1px",
-                    maxWidth: "540px",
-                    minWidth: "326px",
+                    maxWidth: "100%", // Changed from 540px to 100%
+                    minWidth: "auto", // Changed from 326px to auto
                     padding: "0",
-                    width: "99.375%",
+                    width: "100%", // Changed from 99.375% to 100%
                 }}
             >
                 <div style={{ padding: "16px" }}>

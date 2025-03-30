@@ -69,12 +69,11 @@ h6 {
 
 @layer components {
     .section-padding {
-        padding-top: 6rem;
-        padding-bottom: 6rem;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
         padding-left: 1rem;
         padding-right: 1rem;
     }
-
     .heading-xl {
         font-size: 2.5rem;
         line-height: 1.2;
@@ -287,8 +286,8 @@ h6 {
         position: absolute;
         top: -1rem;
         bottom: -1rem;
-        left: -1rem;
-        right: -1rem;
+        left: -0.5rem;
+        right: -0.5rem;
         background-color: rgba(245, 242, 233, 0.842);
         border-radius: 1rem;
         z-index: -1;
@@ -324,6 +323,13 @@ h6 {
     );
     margin: 3rem auto;
     width: 80%;
+}
+
+@media (min-width: 768px) {
+    .section-padding {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
 }
 
 /* Custom scrollbar */
