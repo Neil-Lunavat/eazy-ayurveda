@@ -16,7 +16,7 @@ const HeroSection = () => {
             {/* Background Elements */}
             <div className="absolute inset-0 -z-10">
                 <Image
-                    src="/herb-background.png"
+                    src="/herb-background.webp"
                     alt="Herbal Background"
                     fill
                     className="object-cover opacity-60"

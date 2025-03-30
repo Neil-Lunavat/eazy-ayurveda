@@ -103,7 +103,7 @@ const ProductSection = () => {
                                     className="drop-shadow-2xl"
                                 >
                                     <Image
-                                        src="/product.png"
+                                        src="/product.webp"
                                         alt={productInfo.name}
                                         width={500}
                                         height={500}
