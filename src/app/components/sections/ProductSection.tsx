@@ -3,72 +3,61 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { fadeIn, staggerContainer } from "@/app/lib/motion";
 import { productInfo } from "@/app/lib/constants";
-import {
-    Zap,
-    Brain,
-    Shield,
-    ArrowRight,
-    Clock,
-    Check,
-    Star,
-} from "lucide-react";
+import { Zap, Brain, Shield, ArrowRight, Clock, Check } from "lucide-react";
 
 const ProductSection = () => {
     const [activeTab, setActiveTab] = useState("benefits");
-    const [isHovered, setIsHovered] = useState(false);
 
     // Helper function to get the appropriate icon
     const getBenefitIcon = (iconName: string) => {
         switch (iconName) {
             case "lightning":
-                return <Zap className="w-6 h-6 text-ayurveda-olive" />;
+                return <Zap className="w-6 h-6 text-accent" />;
             case "brain":
-                return <Brain className="w-6 h-6 text-ayurveda-olive" />;
+                return <Brain className="w-6 h-6 text-accent" />;
             case "shield":
-                return <Shield className="w-6 h-6 text-ayurveda-olive" />;
+                return <Shield className="w-6 h-6 text-accent" />;
             default:
-                return <Zap className="w-6 h-6 text-ayurveda-olive" />;
+                return <Zap className="w-6 h-6 text-accent" />;
         }
     };
 
     return (
-        <section id="product" className="py-20 px-4 relative overflow-hidden">
-            {/* Background Elements */}
-            <div className="absolute inset-0 -z-10">
-                <div className="absolute inset-0 bg-ayurveda-cream"></div>
-                <div className="absolute right-0 top-0 w-64 h-64 bg-ayurveda-mint rounded-full opacity-20 blur-3xl transform translate-x-1/2 -translate-y-1/4"></div>
-                <div className="absolute left-0 bottom-0 w-80 h-80 bg-ayurveda-yellow rounded-full opacity-10 blur-3xl transform -translate-x-1/2 translate-y-1/4"></div>
-            </div>
-
-            <div className="container mx-auto max-w-6xl">
+        <section
+            id="product"
+            className="section-padding bg-primary bg-opacity-30"
+        >
+            <div className="container mx-auto">
                 {/* Section Title */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
+                    variants={fadeIn("up", 0.2)}
+                    initial="hidden"
+                    whileInView="show"
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <span className="inline-block px-3 py-1 bg-ayurveda-mint text-ayurveda-olive rounded-full text-sm font-medium mb-3">
-                        OUR PREMIUM OFFERING
-                    </span>
-                    <h2 className="heading-lg mb-4">Pure Himalayan Shilajit</h2>
-                    <div className="h-1 w-20 bg-ayurveda-olive mx-auto"></div>
+                    <h2 className="heading-lg mb-4">Our Product</h2>
+                    <p className="paragraph max-w-2xl mx-auto">
+                        Premium quality Shilajit sourced from the pristine
+                        Himalayan mountains, carefully processed to preserve its
+                        natural potency and benefits.
+                    </p>
+                    <div className="h-1 w-20 bg-accent mx-auto mt-4"></div>
                 </motion.div>
 
                 {/* Product Showcase */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
                     {/* Product Image */}
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
+                        variants={fadeIn("right", 0.3)}
+                        initial="hidden"
+                        whileInView="show"
                         viewport={{ once: true }}
                         className="relative"
                     >
-                        <div className="relative h-96 flex justify-center items-center">
-                            {/* Circular decorations */}
+                        <div className="relative h-96 flex justify-center items-center bg-white bg-opacity-70 rounded-2xl shadow-lg p-6">
                             <motion.div
                                 animate={{ rotate: 360 }}
                                 transition={{
@@ -76,7 +65,7 @@ const ProductSection = () => {
                                     repeat: Infinity,
                                     ease: "linear",
                                 }}
-                                className="absolute inset-0 rounded-full border-2 border-dashed border-ayurveda-sage opacity-30"
+                                className="absolute inset-0 rounded-full border-2 border-dashed border-primary opacity-20"
                             ></motion.div>
 
                             <motion.div
@@ -86,56 +75,27 @@ const ProductSection = () => {
                                     repeat: Infinity,
                                     ease: "linear",
                                 }}
-                                className="absolute inset-10 rounded-full border-2 border-dashed border-ayurveda-olive opacity-20"
+                                className="absolute inset-10 rounded-full border-2 border-dashed border-accent opacity-20"
                             ></motion.div>
 
-                            {/* Product showcase */}
-                            <div
-                                className="relative w-72 h-72 flex justify-center items-center"
-                                onMouseEnter={() => setIsHovered(true)}
-                                onMouseLeave={() => setIsHovered(false)}
-                            >
+                            <div className="relative w-64 h-64 flex justify-center items-center">
                                 <motion.div
-                                    animate={{
-                                        y: isHovered ? 0 : [-15, 0, -15],
-                                        rotateZ: isHovered ? [0, -5, 5, 0] : 0,
-                                    }}
+                                    animate={{ y: [0, -15, 0] }}
                                     transition={{
-                                        y: {
-                                            duration: 3,
-                                            repeat: Infinity,
-                                            ease: "easeInOut",
-                                        },
-                                        rotateZ: {
-                                            duration: 1,
-                                            ease: "easeInOut",
-                                        },
+                                        duration: 3,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
                                     }}
-                                    className="relative drop-shadow-2xl"
+                                    className="drop-shadow-2xl"
                                 >
                                     <Image
-                                        src="/placeholder.webp"
+                                        src="/shilajit-product.png"
                                         alt={productInfo.name}
-                                        width={300}
-                                        height={300}
+                                        width={280}
+                                        height={280}
                                         className="object-contain z-10"
                                     />
-
-                                    {/* Glow effect */}
-                                    <div className="absolute -inset-4 bg-gradient-to-br from-ayurveda-yellow/20 to-transparent rounded-full blur-lg -z-10"></div>
                                 </motion.div>
-
-                                {/* Rays of light animation on hover */}
-                                {isHovered && (
-                                    <motion.div
-                                        className="absolute inset-0 -z-10"
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        exit={{ opacity: 0 }}
-                                    >
-                                        <div className="absolute inset-0 bg-gradient-to-r from-ayurveda-yellow/0 via-ayurveda-yellow/10 to-ayurveda-yellow/0 blur-lg"></div>
-                                    </motion.div>
-                                )}
                             </div>
 
                             {/* Price tag */}
@@ -143,109 +103,59 @@ const ProductSection = () => {
                                 initial={{ scale: 0 }}
                                 animate={{ scale: 1 }}
                                 transition={{ delay: 0.5, type: "spring" }}
-                                className="absolute bottom-5 right-5 bg-ayurveda-olive text-white rounded-full shadow-lg shadow-ayurveda-olive/30"
+                                className="absolute top-4 right-4 bg-accent text-white rounded-full w-20 h-20 flex flex-col items-center justify-center shadow-lg"
                             >
-                                <div className="relative w-20 h-20 flex flex-col items-center justify-center">
-                                    <span className="text-xs font-light">
-                                        Only
-                                    </span>
-                                    <span className="text-xl font-bold">
-                                        ${productInfo.price}
-                                    </span>
-                                    <div className="absolute inset-0 rounded-full border-2 border-white border-opacity-20 animate-pulse-soft"></div>
-                                </div>
+                                <span className="text-xs">Just</span>
+                                <span className="text-xl font-bold">
+                                    ${productInfo.price}
+                                </span>
                             </motion.div>
                         </div>
                     </motion.div>
 
                     {/* Product Info */}
                     <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6 }}
+                        variants={fadeIn("left", 0.3)}
+                        initial="hidden"
+                        whileInView="show"
                         viewport={{ once: true }}
+                        className="bg-white bg-opacity-80 rounded-2xl p-6 shadow-md"
                     >
-                        <h3 className="heading-md mb-4 text-ayurveda-olive">
+                        <h3 className="heading-md mb-2 text-accent">
                             Pure Himalayan Shilajit
                         </h3>
-
-                        <div className="flex items-center mb-4">
-                            {[1, 2, 3, 4, 5].map((star) => (
-                                <Star
-                                    key={star}
-                                    className="w-4 h-4 fill-ayurveda-yellow text-ayurveda-yellow mr-1"
-                                />
-                            ))}
-                            <span className="text-sm text-ayurveda-text ml-2">
-                                (125+ Reviews)
-                            </span>
-                        </div>
-
                         <p className="paragraph mb-6">
-                            {productInfo.description}. Harvested with care from
-                            the pristine Himalayan mountains, our Shilajit is
-                            rich in fulvic acid and essential minerals to boost
-                            your energy and support overall wellness.
+                            {productInfo.description}
                         </p>
 
-                        {/* Product USPs */}
-                        <div className="bg-white rounded-lg p-4 mb-6 shadow-sm">
-                            <ul className="space-y-2">
-                                <li className="flex items-center">
-                                    <Check className="w-5 h-5 text-ayurveda-olive mr-2 flex-shrink-0" />
-                                    <span className="text-ayurveda-text">
-                                        100% Pure & Authentic
-                                    </span>
-                                </li>
-                                <li className="flex items-center">
-                                    <Check className="w-5 h-5 text-ayurveda-olive mr-2 flex-shrink-0" />
-                                    <span className="text-ayurveda-text">
-                                        Lab Tested for Purity
-                                    </span>
-                                </li>
-                                <li className="flex items-center">
-                                    <Check className="w-5 h-5 text-ayurveda-olive mr-2 flex-shrink-0" />
-                                    <span className="text-ayurveda-text">
-                                        Rich in Fulvic Acid & Minerals
-                                    </span>
-                                </li>
-                                <li className="flex items-center">
-                                    <Check className="w-5 h-5 text-ayurveda-olive mr-2 flex-shrink-0" />
-                                    <span className="text-ayurveda-text">
-                                        Sustainable Harvesting Methods
-                                    </span>
-                                </li>
-                            </ul>
-                        </div>
-
                         {/* Tabs */}
-                        <div className="flex border-b border-ayurveda-mint mb-6">
+                        <div className="flex border-b-2 border-primary border-opacity-30 mb-8">
                             <button
                                 onClick={() => setActiveTab("benefits")}
-                                className={`py-2 px-4 font-medium transition-colors ${
+                                className={`py-3 px-5 font-medium transition-colors rounded-t-lg ${
                                     activeTab === "benefits"
-                                        ? "text-ayurveda-olive border-b-2 border-ayurveda-olive"
-                                        : "text-ayurveda-text"
+                                        ? "text-accent bg-primary bg-opacity-20 border-b-2 border-accent"
+                                        : "text-text hover:text-accent hover:bg-primary hover:bg-opacity-10"
                                 }`}
                             >
                                 Benefits
                             </button>
                             <button
                                 onClick={() => setActiveTab("ingredients")}
-                                className={`py-2 px-4 font-medium transition-colors ${
+                                className={`py-3 px-5 font-medium transition-colors rounded-t-lg ${
                                     activeTab === "ingredients"
-                                        ? "text-ayurveda-olive border-b-2 border-ayurveda-olive"
-                                        : "text-ayurveda-text"
+                                        ? "text-accent bg-primary bg-opacity-20 border-b-2 border-accent"
+                                        : "text-text hover:text-accent hover:bg-primary hover:bg-opacity-10"
                                 }`}
                             >
                                 Ingredients
                             </button>
                             <button
                                 onClick={() => setActiveTab("usage")}
-                                className={`py-2 px-4 font-medium transition-colors ${
+                                className={`py-3 px-5 font-medium transition-colors rounded-t-lg ${
                                     activeTab === "usage"
-                                        ? "text-ayurveda-olive border-b-2 border-ayurveda-olive"
-                                        : "text-ayurveda-text"
+                                        ? "text-accent bg-primary bg-opacity-20 border-b-2 border-accent"
+                                        : "text-text hover:text-accent hover:bg-primary hover:bg-opacity-10"
                                 }`}
                             >
                                 How to Use
@@ -253,116 +163,96 @@ const ProductSection = () => {
                         </div>
 
                         {/* Tab Content */}
-                        <div className="min-h-[240px]">
+                        <div className="min-h-[300px] p-2">
                             {/* Benefits Tab */}
                             {activeTab === "benefits" && (
                                 <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 10 }}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
                                     transition={{ duration: 0.3 }}
+                                    className="space-y-6"
                                 >
-                                    <ul className="space-y-4">
-                                        {productInfo.benefits.map(
-                                            (benefit, index) => (
-                                                <motion.li
-                                                    key={index}
-                                                    initial={{
-                                                        opacity: 0,
-                                                        x: -20,
-                                                    }}
-                                                    animate={{
-                                                        opacity: 1,
-                                                        x: 0,
-                                                    }}
-                                                    transition={{
-                                                        delay: index * 0.1,
-                                                    }}
-                                                    className="flex items-start space-x-4 bg-white p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-                                                >
-                                                    <div className="mt-1 p-2 bg-ayurveda-mint rounded-full">
-                                                        {getBenefitIcon(
-                                                            benefit.icon
-                                                        )}
-                                                    </div>
-                                                    <div>
-                                                        <h4 className="font-semibold text-ayurveda-olive">
-                                                            {benefit.title}
-                                                        </h4>
-                                                        <p className="text-sm text-ayurveda-text">
-                                                            {
-                                                                benefit.description
-                                                            }
-                                                        </p>
-                                                    </div>
-                                                </motion.li>
-                                            )
-                                        )}
-                                    </ul>
+                                    {productInfo.benefits.map(
+                                        (benefit, index) => (
+                                            <motion.div
+                                                key={index}
+                                                initial={{ opacity: 0, y: 20 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{
+                                                    delay: index * 0.1,
+                                                }}
+                                                className="flex items-start space-x-4 bg-primary bg-opacity-10 p-4 rounded-lg"
+                                            >
+                                                <div className="mt-1 p-2 bg-white rounded-full shadow-sm">
+                                                    {getBenefitIcon(
+                                                        benefit.icon
+                                                    )}
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-semibold text-accent text-lg">
+                                                        {benefit.title}
+                                                    </h4>
+                                                    <p className="text-text">
+                                                        {benefit.description}
+                                                    </p>
+                                                </div>
+                                            </motion.div>
+                                        )
+                                    )}
                                 </motion.div>
                             )}
 
                             {/* Ingredients Tab */}
                             {activeTab === "ingredients" && (
                                 <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 10 }}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
                                     transition={{ duration: 0.3 }}
+                                    className="space-y-4"
                                 >
-                                    <ul className="space-y-3">
-                                        {productInfo.ingredients.map(
-                                            (ingredient, index) => (
-                                                <motion.li
-                                                    key={index}
-                                                    initial={{
-                                                        opacity: 0,
-                                                        x: -20,
-                                                    }}
-                                                    animate={{
-                                                        opacity: 1,
-                                                        x: 0,
-                                                    }}
-                                                    transition={{
-                                                        delay: index * 0.1,
-                                                    }}
-                                                    className="flex items-start space-x-3 bg-white p-3 rounded-lg shadow-sm"
-                                                >
-                                                    <div className="mt-1 flex-shrink-0 w-8 h-8 rounded-full bg-ayurveda-mint flex items-center justify-center">
-                                                        <span className="font-semibold text-ayurveda-olive">
-                                                            {index + 1}
-                                                        </span>
-                                                    </div>
-                                                    <div>
-                                                        <h4 className="font-semibold text-ayurveda-olive">
-                                                            {ingredient.name}
-                                                        </h4>
-                                                        <p className="text-sm text-ayurveda-text">
-                                                            {
-                                                                ingredient.description
-                                                            }
-                                                        </p>
-                                                    </div>
-                                                </motion.li>
-                                            )
-                                        )}
-                                    </ul>
+                                    {productInfo.ingredients.map(
+                                        (ingredient, index) => (
+                                            <motion.div
+                                                key={index}
+                                                initial={{ opacity: 0, y: 20 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                transition={{
+                                                    delay: index * 0.1,
+                                                }}
+                                                className="flex items-start space-x-4 p-4 border-b border-primary border-opacity-20"
+                                            >
+                                                <div className="mt-1 flex-shrink-0">
+                                                    <Check className="h-5 w-5 text-accent" />
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-semibold text-accent">
+                                                        {ingredient.name}
+                                                    </h4>
+                                                    <p className="text-text">
+                                                        {ingredient.description}
+                                                    </p>
+                                                </div>
+                                            </motion.div>
+                                        )
+                                    )}
                                 </motion.div>
                             )}
 
                             {/* Usage Tab */}
                             {activeTab === "usage" && (
                                 <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 10 }}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
                                     transition={{ duration: 0.3 }}
                                 >
-                                    <div className="mb-6">
-                                        <h4 className="font-semibold text-ayurveda-olive mb-3">
+                                    <div className="mb-8 bg-primary bg-opacity-10 p-5 rounded-lg">
+                                        <h4 className="font-semibold text-accent mb-4 text-lg">
                                             Simple Steps:
                                         </h4>
-                                        <ol className="space-y-3">
+                                        <ol className="space-y-4">
                                             {productInfo.usage.map(
                                                 (item, index) => (
                                                     <motion.li
@@ -378,16 +268,16 @@ const ProductSection = () => {
                                                         transition={{
                                                             delay: index * 0.1,
                                                         }}
-                                                        className="flex items-start space-x-3 bg-white p-3 rounded-lg shadow-sm"
+                                                        className="flex items-start space-x-4"
                                                     >
-                                                        <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-ayurveda-olive text-white text-sm font-semibold">
+                                                        <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-accent text-white text-sm font-bold">
                                                             {index + 1}
                                                         </span>
                                                         <div>
-                                                            <span className="font-medium text-ayurveda-olive">
+                                                            <span className="font-medium text-accent">
                                                                 {item.step}
                                                             </span>
-                                                            <span className="text-sm text-ayurveda-text ml-1 opacity-90">
+                                                            <span className="text-text ml-2 block">
                                                                 {item.detail}
                                                             </span>
                                                         </div>
@@ -397,11 +287,11 @@ const ProductSection = () => {
                                         </ol>
                                     </div>
 
-                                    <div>
-                                        <h4 className="font-semibold text-ayurveda-olive mb-3">
+                                    <div className="bg-white p-5 rounded-lg shadow-sm">
+                                        <h4 className="font-semibold text-accent mb-4 text-lg">
                                             When to Use:
                                         </h4>
-                                        <ul className="space-y-2 bg-white p-4 rounded-lg shadow-sm">
+                                        <ul className="space-y-3">
                                             {productInfo.usageTimes.map(
                                                 (item, index) => (
                                                     <motion.li
@@ -419,14 +309,14 @@ const ProductSection = () => {
                                                                 0.3 +
                                                                 index * 0.1,
                                                         }}
-                                                        className="flex items-start space-x-3"
+                                                        className="flex items-start space-x-3 p-2 hover:bg-primary hover:bg-opacity-5 rounded-md transition-colors"
                                                     >
-                                                        <Clock className="flex-shrink-0 mt-1 w-4 h-4 text-ayurveda-olive" />
+                                                        <Clock className="flex-shrink-0 mt-1 w-5 h-5 text-accent" />
                                                         <div>
-                                                            <span className="font-medium text-ayurveda-olive">
+                                                            <span className="font-medium text-accent">
                                                                 {item.time}:
                                                             </span>
-                                                            <span className="text-sm text-ayurveda-text ml-1">
+                                                            <span className="text-text ml-1">
                                                                 {item.benefit}
                                                             </span>
                                                         </div>
@@ -441,24 +331,19 @@ const ProductSection = () => {
 
                         {/* Buy Button */}
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.5 }}
-                            viewport={{ once: true }}
+                            variants={fadeIn("up", 0.5)}
                             className="mt-8"
                         >
-                            <motion.a
+                            <a
                                 href="#"
-                                className="btn-primary flex items-center justify-center space-x-2 w-full sm:w-auto"
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
+                                className="btn-primary flex items-center space-x-2 w-full justify-center"
                             >
                                 <span>Buy Now - ${productInfo.price}</span>
                                 <ArrowRight size={16} />
-                            </motion.a>
-                            <p className="text-center text-sm text-ayurveda-text mt-3">
-                                Free shipping on orders over $50 • 30-day
-                                money-back guarantee
+                            </a>
+                            <p className="text-center text-muted mt-3">
+                                Free shipping on orders over $50 • Secure
+                                Checkout
                             </p>
                         </motion.div>
                     </motion.div>
@@ -466,13 +351,13 @@ const ProductSection = () => {
 
                 {/* Testimonials */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
+                    variants={staggerContainer(0.1, 0.2)}
+                    initial="hidden"
+                    whileInView="show"
                     viewport={{ once: true }}
-                    className="pt-16"
+                    className="bg-white rounded-2xl p-8 shadow-lg mt-16"
                 >
-                    <h3 className="heading-md text-center mb-8 text-ayurveda-olive">
+                    <h3 className="heading-md text-center mb-8">
                         What Our Customers Say
                     </h3>
 
@@ -482,74 +367,52 @@ const ProductSection = () => {
                                 name: "Rahul S.",
                                 text: "I've tried many Shilajit brands, but EAZY AYURVEDA stands out for its purity and potency. I feel more energetic after just two weeks of use!",
                                 rating: 5,
-                                image: "/placeholder.webp",
-                                verified: true,
+                                location: "Mumbai",
                             },
                             {
                                 name: "Meera P.",
                                 text: "The quality is exceptional! It dissolves easily and has a mild, earthy taste. I love that it's sustainably sourced and comes in eco-friendly packaging.",
                                 rating: 5,
-                                image: "/placeholder.webp",
-                                verified: true,
+                                location: "Delhi",
                             },
                             {
                                 name: "Aditya K.",
                                 text: "This has become an essential part of my daily routine. My mental clarity has improved, and I feel more balanced overall. Highly recommend!",
                                 rating: 4,
-                                image: "/placeholder.webp",
-                                verified: true,
+                                location: "Bangalore",
                             },
                         ].map((testimonial, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{
-                                    duration: 0.5,
-                                    delay: index * 0.1,
-                                }}
-                                viewport={{ once: true }}
-                                className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                                variants={fadeIn("up", 0.3 + index * 0.1)}
+                                className="bg-primary bg-opacity-5 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow"
                             >
-                                <div className="flex items-center mb-3">
-                                    <div className="flex mr-2">
-                                        {[...Array(5)].map((_, i) => (
-                                            <Star
-                                                key={i}
-                                                className={`h-4 w-4 ${
-                                                    i < testimonial.rating
-                                                        ? "fill-ayurveda-yellow text-ayurveda-yellow"
-                                                        : "text-gray-300"
-                                                }`}
-                                            />
-                                        ))}
-                                    </div>
-
-                                    {testimonial.verified && (
-                                        <span className="text-xs bg-ayurveda-mint text-ayurveda-olive px-2 py-0.5 rounded-full">
-                                            Verified
-                                        </span>
-                                    )}
+                                <div className="flex mb-3">
+                                    {[...Array(5)].map((_, i) => (
+                                        <svg
+                                            key={i}
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className={`h-5 w-5 ${
+                                                i < testimonial.rating
+                                                    ? "text-yellow-500"
+                                                    : "text-gray-300"
+                                            }`}
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                        >
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                    ))}
                                 </div>
-
-                                <p className="text-ayurveda-text mb-4 italic">
-                                    "{testimonial.text}"
+                                <p className="text-text italic mb-4 line-clamp-4">
+                                    &quot;{testimonial.text}&quot;
                                 </p>
-
-                                <div className="flex items-center">
-                                    <div className="w-10 h-10 rounded-full overflow-hidden bg-ayurveda-mint mr-3 flex-shrink-0">
-                                        {testimonial.image && (
-                                            <Image
-                                                src={testimonial.image}
-                                                alt={testimonial.name}
-                                                width={40}
-                                                height={40}
-                                                className="object-cover"
-                                            />
-                                        )}
-                                    </div>
-                                    <p className="text-ayurveda-olive font-medium">
+                                <div className="flex justify-between items-center">
+                                    <p className="text-accent font-semibold">
                                         {testimonial.name}
+                                    </p>
+                                    <p className="text-muted text-sm">
+                                        {testimonial.location}
                                     </p>
                                 </div>
                             </motion.div>

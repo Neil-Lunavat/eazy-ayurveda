@@ -1,7 +1,8 @@
 "use client";
 
 import React, { ButtonHTMLAttributes } from "react";
-import { motion, HTMLMotionProps } from "framer-motion";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface ButtonProps
     extends Omit<
@@ -13,12 +14,15 @@ interface ButtonProps
         | "onAnimationStart"
         | "onAnimationEnd"
     > {
-    variant?: "primary" | "secondary" | "outline";
+    variant?: "primary" | "secondary" | "outline" | "text";
     size?: "sm" | "md" | "lg";
     children: React.ReactNode;
     fullWidth?: boolean;
     asLink?: boolean;
     href?: string;
+    icon?: React.ReactNode;
+    iconPosition?: "left" | "right";
+    className?: string;
 }
 
 const Button = ({
@@ -28,21 +32,24 @@ const Button = ({
     fullWidth = false,
     asLink = false,
     href,
-    className,
+    icon,
+    iconPosition = "right",
+    className = "",
     ...props
 }: ButtonProps) => {
     // Define base styles based on variants and sizes
     const baseStyles =
-        "inline-flex items-center justify-center rounded-md font-medium transition-all duration-300 focus:outline-none";
+        "inline-flex items-center justify-center rounded-md font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-opacity-50";
 
     // Variant styles
     const variantStyles = {
         primary:
-            "bg-accent text-white hover:bg-opacity-90 active:bg-opacity-100",
+            "bg-accent text-on-accent hover:bg-darkolive shadow-md hover:shadow-lg",
         secondary:
-            "bg-secondary text-text hover:bg-opacity-90 active:bg-opacity-100",
+            "bg-secondary text-accent hover:bg-opacity-90 active:bg-opacity-100 shadow-md hover:shadow-lg",
         outline:
-            "bg-transparent border border-accent text-accent hover:bg-accent hover:text-white",
+            "bg-transparent border-2 border-accent text-accent hover:bg-accent hover:text-on-accent",
+        text: "bg-transparent text-accent hover:bg-accent hover:bg-opacity-10 hover:text-on-accent",
     };
 
     // Size styles
@@ -55,38 +62,57 @@ const Button = ({
     // Width styles
     const widthStyles = fullWidth ? "w-full" : "";
 
-    // Combine all styles
-    const combinedStyles = `${baseStyles} ${variantStyles[variant]} ${
-        sizeStyles[size]
-    } ${widthStyles} ${className || ""}`;
+    // Icon styles
+    const leftIconStyles = icon && iconPosition === "left" ? "flex-row" : "";
+    const rightIconStyles =
+        icon && iconPosition === "right" ? "flex-row-reverse" : "";
 
-    // Hover animation
-    const hoverAnimation = {
-        whileHover: { scale: 1.02 },
-        whileTap: { scale: 0.98 },
+    // Icon spacing
+    const iconSpacing = icon
+        ? iconPosition === "left"
+            ? "space-x-2"
+            : "space-x-reverse space-x-2"
+        : "";
+
+    // Combine all styles
+    const combinedStyles = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${widthStyles} ${leftIconStyles} ${rightIconStyles} ${iconSpacing} ${className}`;
+
+    // Animation variants
+    const buttonAnimation = {
+        rest: { scale: 1 },
+        hover: { scale: 1.02 },
+        tap: { scale: 0.98 },
     };
 
     // Render as link or button
     if (asLink && href) {
         return (
-            <motion.a
-                href={href}
-                className={combinedStyles}
-                {...hoverAnimation}
+            <motion.div
+                initial="rest"
+                whileHover="hover"
+                whileTap="tap"
+                variants={buttonAnimation}
             >
-                {children}
-            </motion.a>
+                <Link href={href} className={combinedStyles}>
+                    {icon && <span className="flex-shrink-0">{icon}</span>}
+                    <span>{children}</span>
+                </Link>
+            </motion.div>
         );
     }
 
     return (
         <motion.button
             className={combinedStyles}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            initial="rest"
+            whileHover="hover"
+            whileTap="tap"
+            variants={buttonAnimation}
+            type={props.type || "button"}
             {...props}
         >
-            {children}
+            {icon && <span className="flex-shrink-0">{icon}</span>}
+            <span>{children}</span>
         </motion.button>
     );
 };

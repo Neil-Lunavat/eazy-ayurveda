@@ -16,7 +16,7 @@ const InstagramSection = () => {
     ];
 
     return (
-        <section className="section-padding bg-gradient-to-b from-primary from-opacity-5 to-white">
+        <section className="section-padding bg-gradient-to-b from-primary from-opacity-10 to-white">
             <div className="container mx-auto">
                 {/* Section Title */}
                 <motion.div
@@ -26,11 +26,13 @@ const InstagramSection = () => {
                     viewport={{ once: true }}
                     className="text-center mb-12"
                 >
-                    <h2 className="heading-lg mb-4">Follow Us on Instagram</h2>
-                    <p className="paragraph max-w-xl mx-auto">
-                        Join our community and stay updated with the latest
-                        products, wellness tips, and exclusive offers.
+                    <h2 className="heading-lg mb-4">Join Our Community</h2>
+                    <p className="paragraph max-w-2xl mx-auto">
+                        Follow us on Instagram for wellness tips, product
+                        updates, and to become part of our growing Ayurvedic
+                        community.
                     </p>
+                    <div className="h-1 w-20 bg-accent mx-auto mt-4"></div>
                 </motion.div>
 
                 {/* Instagram Grid */}
@@ -39,27 +41,27 @@ const InstagramSection = () => {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
-                    className="grid grid-cols-2 md:grid-cols-4 gap-4"
+                    className="grid grid-cols-2 md:grid-cols-4 gap-6"
                 >
                     {instagramPosts.map((post, index) => (
                         <motion.div
                             key={post.id}
                             variants={fadeIn("up", 0.2 + index * 0.1)}
-                            className="relative group overflow-hidden rounded-lg"
+                            className="relative group overflow-hidden rounded-xl shadow-md img-zoom-container"
                         >
                             <div className="aspect-square relative overflow-hidden">
                                 <Image
                                     src={post.image}
                                     alt={`Instagram post ${post.id}`}
                                     fill
-                                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                    className="object-cover img-zoom"
                                 />
                             </div>
 
                             {/* Overlay with Instagram stats */}
-                            <div className="absolute inset-0 bg-accent bg-opacity-0 group-hover:bg-opacity-70 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                <Instagram className="text-white w-8 h-8 mb-2" />
-                                <div className="flex space-x-4 text-white text-sm">
+                            <div className="absolute inset-0 bg-accent bg-opacity-0 group-hover:bg-opacity-80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                <Instagram className="text-white w-10 h-10 mb-3" />
+                                <div className="flex space-x-4 text-white font-medium">
                                     <span>{post.likes} likes</span>
                                     <span>{post.comments} comments</span>
                                 </div>
@@ -74,17 +76,30 @@ const InstagramSection = () => {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
-                    className="text-center mt-8"
+                    className="text-center mt-10"
                 >
                     <a
                         href="https://instagram.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center space-x-2 text-accent hover:text-opacity-80 transition-colors"
+                        className="inline-flex items-center space-x-2 text-accent hover:text-opacity-80 transition-colors bg-white py-3 px-6 rounded-full shadow-md hover:shadow-lg"
                     >
-                        <Instagram size={20} />
-                        <span className="font-medium">@eazyayurveda</span>
+                        <Instagram size={24} />
+                        <span className="font-medium text-lg">
+                            @eazyayurveda
+                        </span>
                     </a>
+
+                    <div className="mt-6 p-4 max-w-md mx-auto bg-primary bg-opacity-10 rounded-lg">
+                        <p className="text-text text-sm">
+                            Share your experience with our products using the
+                            hashtag
+                            <span className="font-semibold mx-1">
+                                #EazyAyurveda
+                            </span>
+                            for a chance to be featured.
+                        </p>
+                    </div>
                 </motion.div>
             </div>
         </section>

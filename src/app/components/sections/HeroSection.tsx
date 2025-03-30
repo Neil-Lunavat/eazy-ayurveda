@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { companyInfo } from "@/app/lib/constants";
@@ -15,7 +16,7 @@ const HeroSection = () => {
         >
             {/* Background Elements */}
             <div className="absolute inset-0 -z-10">
-                <div className="absolute inset-0 bg-primary bg-opacity-10"></div>
+                <div className="absolute inset-0 bg-primary bg-opacity-75"></div>
                 <Image
                     src="/herb-background.png"
                     alt="Herbal Background"
@@ -31,25 +32,25 @@ const HeroSection = () => {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
-                    className="text-center lg:text-left"
+                    className="text-center lg:text-left overlay-text px-5 py-5"
                 >
                     <motion.span
                         variants={fadeIn("up", 0.2)}
-                        className="inline-block px-3 py-1 bg-secondary bg-opacity-20 text-accent rounded-full text-sm font-medium mb-4"
+                        className="inline-block px-4 py-1.5 bg-secondary text-accent rounded-full text-sm font-semibold mb-6"
                     >
                         AYURVEDIC WELLNESS
                     </motion.span>
 
                     <motion.h1
                         variants={fadeIn("up", 0.3)}
-                        className="heading-xl mb-6"
+                        className="heading-xl"
                     >
                         {companyInfo.tagline}
                     </motion.h1>
 
                     <motion.p
                         variants={fadeIn("up", 0.4)}
-                        className="paragraph mb-8 max-w-lg mx-auto lg:mx-0"
+                        className="paragraph text-lg mb-8 max-w-lg mx-auto lg:mx-0"
                     >
                         Experience the age-old wisdom of Ayurveda with our
                         premium quality Shilajit. Natural strength and vitality,
@@ -60,12 +61,12 @@ const HeroSection = () => {
                         variants={fadeIn("up", 0.5)}
                         className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
                     >
-                        <a href="#product" className="btn-primary">
+                        <Link href="#product" className="btn-primary">
                             Explore Our Products
-                        </a>
-                        <a href="#about" className="btn-secondary">
+                        </Link>
+                        <Link href="#about" className="btn-secondary">
                             Learn More
-                        </a>
+                        </Link>
                     </motion.div>
                 </motion.div>
 
@@ -75,38 +76,35 @@ const HeroSection = () => {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
-                    className="relative flex justify-center"
+                    className="relative flex justify-center rounded-l"
                 >
-                    <div className="relative w-64 h-64 md:w-80 md:h-80">
-                        <div className="absolute inset-0 bg-accent rounded-full opacity-10 transform -translate-x-4 translate-y-4"></div>
-                        <Image
-                            src="/shilajit-product.png"
-                            alt="Shilajit Product"
-                            fill
-                            className="object-contain z-10"
-                        />
+                    <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-xl">
+                        {/* Product Image */}
+                        <motion.div
+                            animate={{
+                                y: [0, -10, 0],
+                                boxShadow: [
+                                    "0 10px 25px rgba(77, 94, 37, 0.1)",
+                                    "0 20px 35px rgba(77, 94, 37, 0.2)",
+                                    "0 10px 25px rgba(77, 94, 37, 0.1)",
+                                ],
+                            }}
+                            transition={{
+                                repeat: Infinity,
+                                duration: 3,
+                                ease: "easeInOut",
+                            }}
+                            className="absolute inset-0 flex items-center justify-center rounded-xl"
+                        >
+                            <Image
+                                src="/shilajit-product.png"
+                                alt="Shilajit Product"
+                                width={280}
+                                height={280}
+                                className="object-contain z-10 rounded-xl"
+                            />
+                        </motion.div>
                     </div>
-
-                    {/* Floating badges */}
-                    <motion.div
-                        className="absolute -top-5 -right-5 bg-white rounded-full shadow-lg p-3 z-20"
-                        animate={{ y: [0, -10, 0] }}
-                        transition={{ repeat: Infinity, duration: 3 }}
-                    >
-                        <div className="bg-secondary bg-opacity-20 text-accent rounded-full w-16 h-16 flex items-center justify-center font-bold">
-                            100% Pure
-                        </div>
-                    </motion.div>
-
-                    <motion.div
-                        className="absolute bottom-0 -left-5 bg-white rounded-full shadow-lg p-3 z-20"
-                        animate={{ y: [0, 10, 0] }}
-                        transition={{ repeat: Infinity, duration: 4 }}
-                    >
-                        <div className="bg-accent bg-opacity-20 text-accent rounded-full w-16 h-16 flex items-center justify-center font-bold">
-                            Natural
-                        </div>
-                    </motion.div>
                 </motion.div>
             </div>
 
@@ -117,7 +115,9 @@ const HeroSection = () => {
                     transition={{ repeat: Infinity, duration: 1.5 }}
                     className="flex flex-col items-center"
                 >
-                    <span className="text-text text-sm mb-2">Scroll Down</span>
+                    <span className="text-accent font-medium text-sm mb-2">
+                        Scroll Down
+                    </span>
                     <ArrowDown className="text-accent w-5 h-5" />
                 </motion.div>
             </div>
