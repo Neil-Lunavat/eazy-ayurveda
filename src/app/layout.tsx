@@ -56,7 +56,7 @@ export default function RootLayout({
                 {/* Background grain effect */}
                 <div className="fixed inset-0 -z-50 pointer-events-none">
                     <div className="absolute inset-0 bg-ayurveda-cream"></div>
-                    <div className="absolute inset-0 bg-[url('/grain-texture.png')] opacity-[0.03]"></div>
+                    <div className="absolute inset-0 bg-[url('/grain-texture.jpg')] opacity-[0.03]"></div>
                 </div>
 
                 <Header />
