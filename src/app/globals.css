@@ -53,6 +53,7 @@ body {
     color: var(--color-text);
     font-family: "Lora", serif;
     line-height: 1.7;
+    cursor: url("/cursor.svg") 2 2, auto;
 }
 
 h1,
@@ -147,6 +148,7 @@ h6 {
         background-color: var(--color-darkolive);
         transform: translateY(-2px);
         box-shadow: var(--shadow-lg);
+        cursor: url("/hand.svg"), pointer;
     }
 
     .btn-secondary {
@@ -182,6 +184,7 @@ h6 {
         background-color: var(--color-cream-light);
         transform: translateY(-2px);
         box-shadow: var(--shadow-lg);
+        cursor: url("/hand.svg"), pointer;
     }
 
     /* Outline inverse button for dark backgrounds */
@@ -212,6 +215,7 @@ h6 {
 
     .navbar-link:hover {
         color: var(--color-accent);
+        cursor: url("/hand.svg"), pointer;
     }
 
     .navbar-link::after {
@@ -227,6 +231,7 @@ h6 {
 
     .navbar-link:hover::after {
         width: 100%;
+        cursor: url("/hand.svg"), pointer;
     }
 
     .card {
@@ -242,6 +247,7 @@ h6 {
     .card:hover {
         transform: translateY(-5px);
         box-shadow: var(--shadow-lg);
+        cursor: url("/hand.svg"), pointer;
     }
 
     .section-title {
@@ -348,6 +354,7 @@ h6 {
 
     ::-webkit-scrollbar-thumb:hover {
         background: var(--color-darkolive);
+        cursor: url("/hand.svg"), pointer;
     }
 }
 
@@ -409,6 +416,7 @@ h6 {
 
 .hover-lift:hover {
     transform: translateY(-5px);
+    cursor: url("/hand.svg"), pointer;
 }
 
 /* Image hover effects */
@@ -423,4 +431,9 @@ h6 {
 
 .img-zoom:hover {
     transform: scale(1.05);
+    cursor: url("/hand.svg"), pointer;
+}
+
+button:hover {
+    cursor: url("/hand.svg"), pointer;
 }
