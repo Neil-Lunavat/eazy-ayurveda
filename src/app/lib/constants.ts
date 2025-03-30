@@ -34,7 +34,7 @@ export const brandColors = {
 // Product Information
 export const productInfo = {
     name: "Shilajit",
-    price: 39.99,
+    price: 499,
     description:
         "Premium quality Himalayan Shilajit for natural strength and vitality. Our pure Shilajit is carefully sourced from the highest mountain ranges to ensure maximum potency and efficacy.",
     benefits: [
@@ -166,10 +166,11 @@ export const faqItems = [
 // Company Information
 export const companyInfo = {
     name: "EAZY AYURVEDA",
-    tagline: "More Than Just Boldness, We Bring You Natural Remedies",
-    email: "info@eazyayurveda.com",
-    phone: "+91 1234567890",
-    address: "Wellness Street, Ayurveda City, India",
+    tagline: "Ayurveda is not just a remedy but a lifestyle.",
+    email: "contact@eazyayurveda.in",
+    phone: "+91 8308563713",
+    address:
+        "Alankar Building, 25, above Vidya Sahakari Bank, Mukund Nagar, Pune, Maharashtra 411037",
 };
 
 // About Us Content

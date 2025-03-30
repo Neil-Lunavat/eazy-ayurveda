@@ -1,26 +1,29 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #f5efdd;
-    --color-accent: #4d5e25;
+    /* Base Colors */
+    --color-cream: #f5efdd; /* Background color */
+    --color-sage: #a2b56d; /* Light olive/sage green for secondary elements */
+    --color-olive: #4d5e25; /* Darker olive green for primary accent */
+    --color-darkolive: #3a4a1c; /* Darker version of olive for hover states */
+    --color-sage-dark: #8fa55f; /* Darker sage for hover states */
+    --color-mint: #d6e0be; /* Light mint green */
+    --color-text: #8d9e49; /* Medium olive for text */
 
-    /* Add logo colors */
-    --color-logo-orange: #f39c12;
-    --color-logo-blue: #3498db;
-    --color-logo-green: #2ecc71;
+    /* Light Logo Colors with Increased Opacity (30%) */
+    --color-logo-orange-light: #f9d7a7; /* Stronger light version of orange from logo */
+    --color-logo-blue-light: #b3e0f7; /* Stronger light version of blue from logo */
+    --color-logo-green-light: #b8e6c9; /* Stronger light version of green from logo */
 
-    /* --color-primary: #f5efdd; */
-    --color-secondary: #a2b56d;
-    /* --color-accent: #4d5e25; */
-    --color-darkolive: #3a4a1c;
-    --color-background: #f5efdd;
-    --color-text: #4d5e25;
-    --color-foreground: var(--color-text);
-    --color-sage: #a2b56d;
-    --color-mint: #d6e0be;
+    /* Simplified naming convention */
+    --color-primary: var(--color-cream);
+    --color-secondary: var(--color-sage);
+    --color-accent: var(--color-olive);
+    --color-background: var(--color-primary);
+
+    /* Standard UI colors */
     --color-card: #ffffff;
     --color-card-foreground: var(--color-text);
-    --color-cta: #f39c12;
     --color-popover: #ffffff;
     --color-popover-foreground: var(--color-text);
     --color-primary-foreground: #ffffff;
@@ -36,6 +39,7 @@
     --color-on-accent: #ffffff;
     --color-on-accent-muted: rgba(255, 255, 255, 0.8);
     --color-cream-light: #f8f5e6;
+
     --radius: 1rem;
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -53,6 +57,7 @@ body {
 
 h1,
 h2,
+h3,
 h4,
 h5,
 h6 {
@@ -158,7 +163,7 @@ h6 {
     }
 
     .btn-secondary:hover {
-        background-color: rgba(230, 202, 55, 0.9);
+        background-color: var(--color-sage-dark);
         transform: translateY(-2px);
         box-shadow: var(--shadow-lg);
     }
@@ -284,7 +289,7 @@ h6 {
         bottom: -1rem;
         left: -1rem;
         right: -1rem;
-        background-color: rgba(245, 239, 221, 0.85);
+        background-color: rgba(245, 242, 233, 0.842);
         border-radius: 1rem;
         z-index: -1;
     }
@@ -292,6 +297,21 @@ h6 {
 
 @utility smoothscroll {
     scroll-behavior: smooth;
+}
+
+@utility grainbg {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px;
+    position: relative;
+}
+
+@utility grainbgoverlay {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(245, 239, 221, 0.92);
+    z-index: -1;
 }
 
 @utility sectiondivider {

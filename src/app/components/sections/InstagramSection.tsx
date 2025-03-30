@@ -58,8 +58,8 @@ const InstagramSection = () => {
                                 />
                             </div>
 
-                            {/* Overlay with Instagram stats */}
-                            <div className="absolute inset-0 bg-accent bg-opacity-0 group-hover:bg-opacity-80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            {/* Overlay with Instagram stats - Updated to use secondary color (sage) */}
+                            <div className="absolute inset-0 bg-secondary bg-opacity-0 group-hover:bg-opacity-80 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
                                 <Instagram className="text-white w-10 h-10 mb-3" />
                                 <div className="flex space-x-4 text-white font-medium">
                                     <span>{post.likes} likes</span>

@@ -55,8 +55,8 @@ const Header = () => {
         <header
             className={`fixed w-full z-50 transition-all duration-300 ${
                 isScrolled
-                    ? "py-4 bg-primary bg-opacity-95 backdrop-blur-sm shadow-md"
-                    : "py-3 bg-primary shadow-md"
+                    ? "py-3 bg-white/80 bg-opacity-95 backdrop-blur-sm shadow-md"
+                    : "py-2 bg-white/80 shadow-md"
             }`}
         >
             <div className="container mx-auto px-4 md:px-8 flex justify-between items-center">
@@ -167,7 +167,7 @@ const Header = () => {
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 <span className="flex items-center justify-center">
-                                    <ShoppingBag size={18} className="mr-2" />
+                                    <ShoppingBag size={12} className="mr-2" />
                                     Shop Now
                                 </span>
                             </Link>

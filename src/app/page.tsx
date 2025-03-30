@@ -4,7 +4,7 @@ import AboutSection from "./components/sections/AboutSection";
 import ProductSection from "./components/sections/ProductSection";
 import InstagramSection from "./components/sections/InstagramSection";
 import ContactSection from "./components/sections/ContactSection";
-import FaqSection from "./components/sections/FaqSection";
+// import FaqSection from "./components/sections/FaqSection";
 
 export default function Home() {
     return (
@@ -13,7 +13,7 @@ export default function Home() {
             <ProductSection />
             <AboutSection />
             <InstagramSection />
-            <FaqSection />
+            {/* <FaqSection /> */}
             <ContactSection />
         </>
     );

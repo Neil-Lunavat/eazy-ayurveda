@@ -46,7 +46,7 @@ const Button = ({
         primary:
             "bg-accent text-on-accent hover:bg-darkolive shadow-md hover:shadow-lg",
         secondary:
-            "bg-secondary text-accent hover:bg-opacity-90 active:bg-opacity-100 shadow-md hover:shadow-lg",
+            "bg-secondary text-accent hover:bg-sage-dark active:bg-secondary shadow-md hover:shadow-lg",
         outline:
             "bg-transparent border-2 border-accent text-accent hover:bg-accent hover:text-on-accent",
         text: "bg-transparent text-accent hover:bg-accent hover:bg-opacity-10 hover:text-on-accent",

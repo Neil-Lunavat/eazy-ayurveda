@@ -10,6 +10,20 @@ import { Zap, Brain, Shield, ArrowRight, Clock, Check } from "lucide-react";
 const ProductSection = () => {
     const [activeTab, setActiveTab] = useState("benefits");
 
+    // Function to get the appropriate icon color based on index
+    const getBenefitIconClass = (index: number) => {
+        switch (index) {
+            case 0:
+                return "bg-logo-orange-light/70"; // First benefit - orange light color
+            case 1:
+                return "bg-logo-blue-light/70"; // Second benefit - blue light color
+            case 2:
+                return "bg-logo-green-light/70"; // Third benefit - green light color
+            default:
+                return "bg-primary";
+        }
+    };
+
     // Helper function to get the appropriate icon
     const getBenefitIcon = (iconName: string) => {
         switch (iconName) {
@@ -41,8 +55,8 @@ const ProductSection = () => {
                     <h2 className="heading-lg mb-4">Our Product</h2>
                     <p className="paragraph max-w-2xl mx-auto">
                         Premium quality Shilajit sourced from the pristine
-                        Himalayan mountains, carefully processed to preserve its
-                        natural potency and benefits.
+                        Himalayan mountain extracts, carefully processed to
+                        preserve its natural potency and benefits.
                     </p>
                     <div className="h-1 w-20 bg-accent mx-auto mt-4"></div>
                 </motion.div>
@@ -57,7 +71,7 @@ const ProductSection = () => {
                         viewport={{ once: true }}
                         className="relative"
                     >
-                        <div className="relative h-96 flex justify-center items-center bg-white bg-opacity-70 rounded-2xl shadow-lg p-6">
+                        <div className="relative h-196 flex justify-center items-center bg-white bg-opacity-70 rounded-2xl shadow-lg p-6">
                             <motion.div
                                 animate={{ rotate: 360 }}
                                 transition={{
@@ -78,7 +92,7 @@ const ProductSection = () => {
                                 className="absolute inset-10 rounded-full border-2 border-dashed border-accent opacity-20"
                             ></motion.div>
 
-                            <div className="relative w-64 h-64 flex justify-center items-center">
+                            <div className="relative w-256 h-256 flex justify-center rounded-lg items-center">
                                 <motion.div
                                     animate={{ y: [0, -15, 0] }}
                                     transition={{
@@ -89,11 +103,11 @@ const ProductSection = () => {
                                     className="drop-shadow-2xl"
                                 >
                                     <Image
-                                        src="/shilajit-product.png"
+                                        src="/product.png"
                                         alt={productInfo.name}
-                                        width={280}
-                                        height={280}
-                                        className="object-contain z-10"
+                                        width={500}
+                                        height={500}
+                                        className="object-contain z-10 rounded-lg"
                                     />
                                 </motion.div>
                             </div>
@@ -122,7 +136,7 @@ const ProductSection = () => {
                         className="bg-white bg-opacity-80 rounded-2xl p-6 shadow-md"
                     >
                         <h3 className="heading-md mb-2 text-accent">
-                            Pure Himalayan Shilajit
+                            Ayurshila Pure Shilajit
                         </h3>
                         <p className="paragraph mb-6">
                             {productInfo.description}
@@ -182,7 +196,9 @@ const ProductSection = () => {
                                                 transition={{
                                                     delay: index * 0.1,
                                                 }}
-                                                className="flex items-start space-x-4 bg-primary bg-opacity-10 p-4 rounded-lg"
+                                                className={`flex items-start space-x-4 p-4 rounded-lg ${getBenefitIconClass(
+                                                    index
+                                                )}`}
                                             >
                                                 <div className="mt-1 p-2 bg-white rounded-full shadow-sm">
                                                     {getBenefitIcon(
@@ -335,7 +351,8 @@ const ProductSection = () => {
                             className="mt-8"
                         >
                             <a
-                                href="#"
+                                href="https://wa.me/918308563713?text=I%20would%20like%20to%20order%20Pure%20Himalayan%20Shilajit."
+                                target="_blank"
                                 className="btn-primary flex items-center space-x-2 w-full justify-center"
                             >
                                 <span>Buy Now - ${productInfo.price}</span>

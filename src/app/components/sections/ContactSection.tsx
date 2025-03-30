@@ -6,38 +6,12 @@ import { fadeIn } from "@/app/lib/motion";
 import { Mail, Phone, MapPin, Send, Clock } from "lucide-react";
 import { companyInfo } from "@/app/lib/constants";
 
-const contactItems = [
-    {
-        icon: (
-            <Mail className="w-6 h-6 text-accent group-hover:text-darkolive" />
-        ),
-        title: "Email",
-        value: companyInfo.email,
-        href: `mailto:${companyInfo.email}`,
-        isLink: true,
-    },
-    {
-        icon: (
-            <Phone className="w-6 h-6 text-accent group-hover:text-darkolive" />
-        ),
-        title: "Phone",
-        value: companyInfo.phone,
-        href: `tel:${companyInfo.phone}`,
-        isLink: true,
-    },
-    {
-        icon: (
-            <MapPin className="w-6 h-6 text-accent group-hover:text-darkolive" />
-        ),
-        title: "Address",
-        value: companyInfo.address,
-        isLink: false,
-    },
-];
-
 const ContactSection = () => {
     return (
-        <section id="contact" className="section-padding bg-cream">
+        <section
+            id="contact"
+            className="section-padding bg-primary bg-opacity-20"
+        >
             <div className="container mx-auto">
                 {/* Section Title */}
                 <motion.div
@@ -52,7 +26,7 @@ const ContactSection = () => {
                         Have questions about our products or need assistance?
                         Our team is here to help you on your wellness journey.
                     </p>
-                    <div className="h-1 w-20 bg-sage mx-auto mt-4"></div>
+                    <div className="h-1 w-20 bg-accent mx-auto mt-4"></div>
                 </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
@@ -62,40 +36,60 @@ const ContactSection = () => {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true }}
-                        className="lg:col-span-2 bg-white rounded-2xl p-8 shadow-lg border border-sage border-opacity-20"
+                        className="lg:col-span-2 bg-white rounded-2xl p-8 shadow-lg"
                     >
                         <h3 className="heading-md mb-6 text-accent">
                             Get in Touch
                         </h3>
 
                         <ul className="space-y-6">
-                            {contactItems.map((item, index) => (
-                                <li
-                                    key={index}
-                                    className="flex items-start space-x-4 group hover:bg-mint hover:bg-opacity-30 p-3 rounded-lg transition-colors"
-                                >
-                                    <div className="p-3 bg-sage bg-opacity-30 rounded-lg group-hover:bg-sage group-hover:bg-opacity-70 transition-colors">
-                                        {item.icon}
-                                    </div>
-                                    <div>
-                                        <h4 className="font-semibold text-accent mb-1">
-                                            {item.title}
-                                        </h4>
-                                        {item.isLink ? (
-                                            <a
-                                                href={item.href}
-                                                className="text-text hover:text-darkolive transition-colors"
-                                            >
-                                                {item.value}
-                                            </a>
-                                        ) : (
-                                            <address className="not-italic text-text">
-                                                {item.value}
-                                            </address>
-                                        )}
-                                    </div>
-                                </li>
-                            ))}
+                            <li className="flex items-start space-x-4 group hover:bg-logo-orange-light hover:bg-opacity-70 p-3 rounded-lg transition-colors">
+                                <div className="p-3 bg-primary bg-opacity-10 rounded-lg group-hover:bg-secondary group-hover:text-white transition-colors">
+                                    <Mail className="w-6 h-6 text-accent group-hover:text-white" />
+                                </div>
+                                <div>
+                                    <h4 className="font-semibold text-accent mb-1">
+                                        Email
+                                    </h4>
+                                    <a
+                                        href={`mailto:${companyInfo.email}`}
+                                        className="text-text hover:text-accent transition-colors"
+                                    >
+                                        {companyInfo.email}
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li className="flex items-start space-x-4 group hover:bg-logo-blue-light hover:bg-opacity-70 p-3 rounded-lg transition-colors">
+                                <div className="p-3 bg-primary bg-opacity-10 rounded-lg group-hover:bg-secondary group-hover:text-white transition-colors">
+                                    <Phone className="w-6 h-6 text-accent group-hover:text-white" />
+                                </div>
+                                <div>
+                                    <h4 className="font-semibold text-accent mb-1">
+                                        Phone
+                                    </h4>
+                                    <a
+                                        href={`tel:${companyInfo.phone}`}
+                                        className="text-text hover:text-accent transition-colors"
+                                    >
+                                        {companyInfo.phone}
+                                    </a>
+                                </div>
+                            </li>
+
+                            <li className="flex items-start space-x-4 group hover:bg-logo-green-light hover:bg-opacity-70 p-3 rounded-lg transition-colors">
+                                <div className="p-3 bg-primary bg-opacity-10 rounded-lg group-hover:bg-secondary group-hover:text-white transition-colors">
+                                    <MapPin className="w-6 h-6 text-accent group-hover:text-white" />
+                                </div>
+                                <div>
+                                    <h4 className="font-semibold text-accent mb-1">
+                                        Address
+                                    </h4>
+                                    <address className="not-italic text-text">
+                                        {companyInfo.address}
+                                    </address>
+                                </div>
+                            </li>
                         </ul>
 
                         <div className="mt-8 p-6 bg-mint rounded-lg border border-sage border-opacity-30">
@@ -140,7 +134,7 @@ const ContactSection = () => {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true }}
-                        className="lg:col-span-3 bg-white rounded-2xl p-8 shadow-lg border border-sage border-opacity-20"
+                        className="lg:col-span-3 bg-white rounded-2xl p-8 shadow-lg"
                     >
                         <h3 className="heading-md mb-6 text-accent">
                             Send a Message
@@ -159,7 +153,7 @@ const ContactSection = () => {
                                         type="text"
                                         id="name"
                                         name="name"
-                                        className="w-full px-4 py-3 rounded-lg border border-mint focus:border-accent focus:ring-2 focus:ring-sage focus:ring-opacity-30 bg-cream bg-opacity-50 placeholder-text placeholder-opacity-70 transition-colors"
+                                        className="form-input"
                                         placeholder="John Doe"
                                         required
                                     />
@@ -176,7 +170,7 @@ const ContactSection = () => {
                                         type="email"
                                         id="email"
                                         name="email"
-                                        className="w-full px-4 py-3 rounded-lg border border-mint focus:border-accent focus:ring-2 focus:ring-sage focus:ring-opacity-30 bg-cream bg-opacity-50 placeholder-text placeholder-opacity-70 transition-colors"
+                                        className="form-input"
                                         placeholder="john@example.com"
                                         required
                                     />
@@ -194,7 +188,7 @@ const ContactSection = () => {
                                     type="text"
                                     id="subject"
                                     name="subject"
-                                    className="w-full px-4 py-3 rounded-lg border border-mint focus:border-accent focus:ring-2 focus:ring-sage focus:ring-opacity-30 bg-cream bg-opacity-50 placeholder-text placeholder-opacity-70 transition-colors"
+                                    className="form-input"
                                     placeholder="How can we help?"
                                     required
                                 />
@@ -211,7 +205,7 @@ const ContactSection = () => {
                                     id="message"
                                     name="message"
                                     rows={5}
-                                    className="w-full px-4 py-3 rounded-lg border border-mint focus:border-accent focus:ring-2 focus:ring-sage focus:ring-opacity-30 bg-cream bg-opacity-50 placeholder-text placeholder-opacity-70 transition-colors resize-none"
+                                    className="form-input resize-none"
                                     placeholder="Your message here..."
                                     required
                                 ></textarea>
@@ -223,7 +217,7 @@ const ContactSection = () => {
                                         id="privacy"
                                         name="privacy"
                                         type="checkbox"
-                                        className="h-4 w-4 accent-accent border-sage rounded"
+                                        className="h-4 w-4 text-accent border-gray-300 rounded"
                                         required
                                     />
                                 </div>
@@ -235,7 +229,7 @@ const ContactSection = () => {
                                         I agree to the{" "}
                                         <a
                                             href="#"
-                                            className="text-sage hover:text-darkolive hover:underline transition-colors"
+                                            className="text-accent hover:underline"
                                         >
                                             Privacy Policy
                                         </a>
@@ -245,7 +239,7 @@ const ContactSection = () => {
 
                             <button
                                 type="submit"
-                                className="w-full flex items-center justify-center space-x-2 bg-accent text-white rounded-lg py-4 px-6 font-medium shadow-md hover:shadow-lg hover:bg-darkolive transition-all duration-300 group"
+                                className="btn-primary w-full flex items-center justify-center space-x-2 group"
                             >
                                 <span>Send Message</span>
                                 <Send
@@ -255,7 +249,7 @@ const ContactSection = () => {
                             </button>
                         </form>
 
-                        <p className="text-text text-sm text-center mt-4">
+                        <p className="text-muted text-sm text-center mt-4">
                             We typically respond within 24 business hours.
                         </p>
                     </motion.div>
@@ -267,9 +261,9 @@ const ContactSection = () => {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true }}
-                    className="mt-16 p-6 bg-mint rounded-xl shadow-md text-center border border-sage border-opacity-10"
+                    className="mt-16 p-6 bg-white rounded-xl shadow-md text-center"
                 >
-                    <h3 className="text-lg font-semibold text-darkolive mb-3">
+                    <h3 className="text-lg font-semibold text-accent mb-3">
                         Connect With Us On Social Media
                     </h3>
                     <p className="text-text mb-6">
@@ -277,10 +271,10 @@ const ContactSection = () => {
                         exclusive offers
                     </p>
                     <div className="flex justify-center space-x-6">
-                        {/* Social Media Icons */}
+                        {/* Social Media Icons - Updated to use secondary (sage) */}
                         <a
                             href="#"
-                            className="p-3 bg-sage bg-opacity-20 rounded-full hover:bg-sage hover:bg-opacity-70 hover:text-darkolive transition-colors"
+                            className="p-3 bg-secondary bg-opacity-10 rounded-full hover:bg-secondary hover:text-white transition-colors"
                         >
                             <svg
                                 className="w-6 h-6"
@@ -297,7 +291,7 @@ const ContactSection = () => {
                         </a>
                         <a
                             href="#"
-                            className="p-3 bg-sage bg-opacity-20 rounded-full hover:bg-sage hover:bg-opacity-70 hover:text-darkolive transition-colors"
+                            className="p-3 bg-secondary bg-opacity-10 rounded-full hover:bg-secondary hover:text-white transition-colors"
                         >
                             <svg
                                 className="w-6 h-6"
@@ -310,7 +304,7 @@ const ContactSection = () => {
                         </a>
                         <a
                             href="#"
-                            className="p-3 bg-sage bg-opacity-20 rounded-full hover:bg-sage hover:bg-opacity-70 hover:text-darkolive transition-colors"
+                            className="p-3 bg-secondary bg-opacity-10 rounded-full hover:bg-secondary hover:text-white transition-colors"
                         >
                             <svg
                                 className="w-6 h-6"
@@ -327,7 +321,7 @@ const ContactSection = () => {
                         </a>
                         <a
                             href="#"
-                            className="p-3 bg-sage bg-opacity-20 rounded-full hover:bg-sage hover:bg-opacity-70 hover:text-darkolive transition-colors"
+                            className="p-3 bg-secondary bg-opacity-10 rounded-full hover:bg-secondary hover:text-white transition-colors"
                         >
                             <svg
                                 className="w-6 h-6"
