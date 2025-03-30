@@ -171,7 +171,7 @@ const ClickSpark: React.FC<ClickSparkProps> = ({
     };
 
     return (
-        <div className="relative w-full h-full z-500" onClick={handleClick}>
+        <div className="relative w-full h-full" onClick={handleClick}>
             <canvas
                 ref={canvasRef}
                 className="absolute inset-0 pointer-events-none z-500"
