@@ -50,7 +50,7 @@ export default function RootLayout({
                 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
             </head>
             <body>
-                <div className="min-h-screen flex flex-col">
+                <div className="min-h-screen flex flex-col overflow-x-hidden">
                     <Header />
                     <main className="flex-grow">{children}</main>
                     <Footer />

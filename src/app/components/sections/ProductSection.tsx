@@ -121,7 +121,7 @@ const ProductSection = () => {
                             >
                                 <span className="text-xs">Just</span>
                                 <span className="text-xl font-bold">
-                                    ${productInfo.price}
+                                    {productInfo.price} ₹
                                 </span>
                             </motion.div>
                         </div>
@@ -355,11 +355,11 @@ const ProductSection = () => {
                                 target="_blank"
                                 className="btn-primary flex items-center space-x-2 w-full justify-center"
                             >
-                                <span>Buy Now - ${productInfo.price}</span>
+                                <span>Buy Now - {productInfo.price} ₹</span>
                                 <ArrowRight size={16} />
                             </a>
                             <p className="text-center text-muted mt-3">
-                                Free shipping on orders over $50 • Secure
+                                Free shipping on orders over 999₹ • Secure
                                 Checkout
                             </p>
                         </motion.div>

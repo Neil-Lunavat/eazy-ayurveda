@@ -34,7 +34,7 @@ export const brandColors = {
 // Product Information
 export const productInfo = {
     name: "Shilajit",
-    price: 499,
+    price: 1099,
     description:
         "Premium quality Himalayan Shilajit for natural strength and vitality. Our pure Shilajit is carefully sourced from the highest mountain ranges to ensure maximum potency and efficacy.",
     benefits: [
