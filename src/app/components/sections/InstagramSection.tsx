@@ -35,7 +35,7 @@ const InstagramSection = () => {
                         updates, and to become part of our growing Ayurvedic
                         community.
                     </p>
-                    <div className="h-1 w-20 bg-accent mx-auto mt-4"></div>
+                    <div className="h-1 w-20 bg-sage rounded-full mx-auto mt-4"></div>
                 </motion.div>
 
                 {/* Instagram Posts */}

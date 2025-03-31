@@ -26,7 +26,7 @@ const ContactSection = () => {
                         Have questions about our products or need assistance?
                         Our team is here to help you on your wellness journey.
                     </p>
-                    <div className="h-1 w-20 bg-accent mx-auto mt-4"></div>
+                    <div className="h-1 w-20 bg-sage rounded-full mx-auto mt-4"></div>
                 </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
@@ -154,7 +154,7 @@ const ContactSection = () => {
                                         id="name"
                                         name="name"
                                         className="form-input"
-                                        placeholder="John Doe"
+                                        placeholder=""
                                         required
                                     />
                                 </div>
@@ -171,7 +171,7 @@ const ContactSection = () => {
                                         id="email"
                                         name="email"
                                         className="form-input"
-                                        placeholder="john@example.com"
+                                        placeholder=""
                                         required
                                     />
                                 </div>
@@ -274,7 +274,7 @@ const ContactSection = () => {
                         {/* Social Media Icons - Updated to use secondary (sage) */}
                         <a
                             href="#"
-                            className="p-3 bg-secondary bg-opacity-10 rounded-full hover:bg-secondary hover:text-white transition-colors"
+                            className="p-3 bg-secondary text-white bg-opacity-10 rounded-full hover:bg-accent hover:text-white transition-colors"
                         >
                             <svg
                                 className="w-6 h-6"
@@ -291,7 +291,7 @@ const ContactSection = () => {
                         </a>
                         <a
                             href="#"
-                            className="p-3 bg-secondary bg-opacity-10 rounded-full hover:bg-secondary hover:text-white transition-colors"
+                            className="p-3 bg-secondary text-white bg-opacity-10 rounded-full hover:bg-accent hover:text-white transition-colors"
                         >
                             <svg
                                 className="w-6 h-6"
@@ -304,7 +304,7 @@ const ContactSection = () => {
                         </a>
                         <a
                             href="#"
-                            className="p-3 bg-secondary bg-opacity-10 rounded-full hover:bg-secondary hover:text-white transition-colors"
+                            className="p-3 bg-secondary text-white bg-opacity-10 rounded-full hover:bg-accent hover:text-white transition-colors"
                         >
                             <svg
                                 className="w-6 h-6"
@@ -321,7 +321,7 @@ const ContactSection = () => {
                         </a>
                         <a
                             href="#"
-                            className="p-3 bg-secondary bg-opacity-10 rounded-full hover:bg-secondary hover:text-white transition-colors"
+                            className="p-3 bg-secondary text-white bg-opacity-10 rounded-full hover:bg-accent hover:text-white transition-colors"
                         >
                             <svg
                                 className="w-6 h-6"

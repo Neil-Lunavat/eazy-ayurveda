@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeIn, staggerContainer } from "@/app/lib/motion";
 import { aboutUsContent, brandBenefits } from "@/app/lib/constants";
-import { Heart, Leaf, Home } from "lucide-react";
+import { Heart, Leaf, Home, Check } from "lucide-react";
 
 const AboutSection = () => {
     // Helper function to get the appropriate icon
@@ -52,7 +52,7 @@ const AboutSection = () => {
                         Discover the story behind our passion for Ayurveda and
                         commitment to authentic wellness solutions.
                     </p>
-                    <div className="h-1 w-20 bg-accent mx-auto mt-4"></div>
+                    <div className="h-1 w-20 bg-sage rounded-full mx-auto mt-4"></div>
                 </motion.div>
 
                 {/* Main Content */}
@@ -73,13 +73,22 @@ const AboutSection = () => {
                                 className="object-cover hover:scale-105 transition-transform duration-700"
                             />
                         </div>
-                        <div className="absolute -bottom-8 -right-8 p-6 bg-white rounded-lg shadow-xl max-w-xs transform rotate-2">
+                        <motion.div
+                            className="absolute -bottom-8 -right-8 p-6 bg-white rounded-lg shadow-xl max-w-xs"
+                            animate={{ rotate: [2, -2, 2] }}
+                            transition={{
+                                duration: 3,
+                                ease: "linear",
+                                repeat: Infinity,
+                                repeatType: "loop",
+                            }}
+                        >
                             <p className="text-text italic leading-relaxed">
                                 {`"Ayurveda teaches us that true wellness comes
                                 from balance - of mind, body, and spirit."`}
                             </p>
                             <div className="mt-2 h-0.5 w-12 bg-secondary"></div>
-                        </div>
+                        </motion.div>
                     </motion.div>
 
                     {/* Text Side */}
@@ -98,8 +107,8 @@ const AboutSection = () => {
                         </p>
                         <ul className="space-y-4">
                             <li className="flex items-start space-x-3">
-                                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-secondary flex items-center justify-center mt-0.5">
-                                    <Check className="h-4 w-4 text-accent" />
+                                <div className="flex-shrink-0 w-4 h-4 rounded-full bg-secondary flex items-center justify-center mt-0.5">
+                                    <Check className="h-2 w-2 text-accent" />
                                 </div>
                                 <span className="text-text">
                                     Founded with family recipes passed down
@@ -107,8 +116,8 @@ const AboutSection = () => {
                                 </span>
                             </li>
                             <li className="flex items-start space-x-3">
-                                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-secondary flex items-center justify-center mt-0.5">
-                                    <Check className="h-4 w-4 text-accent" />
+                                <div className="flex-shrink-0 w-4 h-4 rounded-full bg-secondary flex items-center justify-center mt-0.5">
+                                    <Check className="h-2 w-2 text-accent" />
                                 </div>
                                 <span className="text-text">
                                     Ingredients carefully sourced from
@@ -116,8 +125,8 @@ const AboutSection = () => {
                                 </span>
                             </li>
                             <li className="flex items-start space-x-3">
-                                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-secondary flex items-center justify-center mt-0.5">
-                                    <Check className="h-4 w-4 text-accent" />
+                                <div className="flex-shrink-0 w-4 h-4 rounded-full bg-secondary flex items-center justify-center mt-0.5">
+                                    <Check className="h-2 w-2 text-accent" />
                                 </div>
                                 <span className="text-text">
                                     Formulations based on authentic Ayurvedic
@@ -178,7 +187,7 @@ const AboutSection = () => {
                         and promote holistic well-being.`}
                     </p>
                     <div className="mt-8 flex justify-center">
-                        <a href="#product" className="btn-secondary">
+                        <a href="#product" className="btn-primary">
                             Explore Our Products
                         </a>
                     </div>
@@ -187,8 +196,5 @@ const AboutSection = () => {
         </section>
     );
 };
-
-// Import the Check icon
-import { Check } from "lucide-react";
 
 export default AboutSection;

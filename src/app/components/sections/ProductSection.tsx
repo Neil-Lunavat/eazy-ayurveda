@@ -58,7 +58,7 @@ const ProductSection = () => {
                         Himalayan mountain extracts, carefully processed to
                         preserve its natural potency and benefits.
                     </p>
-                    <div className="h-1 w-20 bg-accent mx-auto mt-4"></div>
+                    <div className="h-1 w-20 bg-sage rounded-full mx-auto mt-4"></div>
                 </motion.div>
 
                 {/* Product Showcase */}
